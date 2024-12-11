@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start and Stop Logging</title>
+</head>
+<body>
+    <h1>JavaScript async</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    let intervalID = null; // Store interval ID here
+
+    const sayDate = function(str) {
+        console.log(str, Date.now());
+    };
+
+    // Start button event listener
+    document.querySelector('#start').addEventListener('click', function() {
+        if (!intervalID) { // Only start if no interval is running
+            intervalID = setInterval(sayDate, 1000, "Hello");
+        }
+    });
+
+    // Stop button event listener
+    document.querySelector('#stop').addEventListener('click', function() {
+        if (intervalID) { // Only stop if an interval is running
+            clearInterval(intervalID); // Clear the interval
+            intervalID = null; // Reset the interval ID
+        }
+    });
+</script>
+</html>
